@@ -1,0 +1,66 @@
+[
+    {
+        "id":"env1",
+        "name":"Test Environment",
+        "description":"Description of Test Environment",
+        "type":"Testing",
+        "basepath":"/some/path"
+    },
+    {
+        "id":"env2",
+        "name":"Production Environment",
+        "description":"Description of Production Environment",
+        "type":"Testing",
+        "basepath":"/some/path2"
+    },
+    {
+        "id":"env3",
+        "name":"Production Environment3",
+        "description":"Description of Production Environment3",
+        "type":"Testing",
+        "basepath":"/some/path3"
+    },
+    {
+        "id":"env4",
+        "name":"Production Environment4",
+        "description":"Description of Production Environment4",
+        "type":"Testing",
+        "basepath":"/some/path4"
+    },
+    {
+        "id":"env5",
+        "name":"Production Environment5",
+        "description":"Description of Production Environment5",
+        "type":"Testing",
+        "basepath":"/some/path5"
+    },
+    {
+        "id":"env6",
+        "name":"Production Environment6",
+        "description":"Description of Production Environment6",
+        "type":"Testing",
+        "basepath":"/some/path6"
+    },
+    {
+        "id":"env7",
+        "name":"Production Environment7",
+        "description":"Description of Production Environment7",
+        "type":"Testing",
+        "basepath":"/some/path7"
+    },
+    {
+        "id":"env8",
+        "name":"Production Environment8",
+        "description":"Description of Production Environment8",
+        "type":"Testing",
+        "basepath":"/some/path8"
+    },
+    {
+        "id":"env9",
+        "name":"Production Environment9",
+        "description":"Description of Production Environment9",
+        "type":"Testing",
+        "basepath":"/some/path9"
+    }
+
+]

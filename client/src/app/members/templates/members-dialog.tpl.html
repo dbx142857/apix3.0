@@ -1,0 +1,68 @@
+<div class="well">
+<form editable-form name="editableForm">
+   <div class="row">
+       <div class="col-md-4 text-right">
+           <span style="color:#f00;">*</span><span>Username</span>
+       </div>
+       <div class="col-md-8">
+          <span editable-text="memberDetail.username" e-name="username">{{memberDetail.username||'empty'}}</span>
+        </div>
+   </div>
+     <div class="row">
+        <div class="col-md-4 text-right">
+            <span style="color:#f00;">*</span><span>Email</span>
+        </div>
+        <div class="col-md-8">
+            <span editable-text="memberDetail.email" e-name="email">{{memberDetail.email||'empty'}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-right">
+            <span style="color:#f00;">*</span><span>First Name</span>
+        </div>
+        <div class="col-md-8">
+        <span editable-text="memberDetail.firstName" e-name="firstName">{{memberDetail.firstName}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-right">
+            <span style="color:#f00;">*</span><span>Last Name</span>
+        </div>
+        <div class="col-md-8">
+             <span editable-text="memberDetail.lastName" e-name="lastName">{{memberDetail.lastName}}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-right">
+            <span style="color:#f00;">*</span><span>Telephone</span>
+        </div>
+        <div class="col-md-8">
+            <span editable-text="memberDetail.telephone">{{memberDetail.telephone}}</span>
+        </div>
+
+    </div>    
+    <div class="row">
+        <div class="col-md-4 text-right">
+            <span style="color:#f00;">*</span><span>Role</span>
+        </div>
+         <div class="col-md-8">
+            <span editable-select="memberDetail.role" e-name="role" e-ng-options='role for role in roles'>{{memberDetail.role}}</span>
+        </div>
+
+    </div>
+
+        <div class="buttons">
+          <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+            Edit
+          </button>
+          <span ng-show="editableForm.$visible">
+            <button type="submit" ng-click="editMember(memberDetail._id,editableForm.$data)" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+              Save
+            </button>
+            <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+              Cancel
+            </button>
+          </span>
+        </div>
+</form>
+</div>

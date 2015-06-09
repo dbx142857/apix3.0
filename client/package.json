@@ -1,0 +1,53 @@
+{
+    "name": "ng-APIX",
+    "description": "An AngularJS version of APIX. Server side is based on Node.js.",
+    "version": "1.0.0",
+    "contributors": [
+        "Burt Yu<byu@tibco-support.com>",
+        "Crystal Liu<yunliu@tibco-support.com>",
+        "John Du<bdu@tibco-support.com>",
+        "Kevin Li<huali@tibco-support.com>",
+        "Vivian Ma<xima@tibco-support.com>"
+    ],
+    "repository": {
+        "type": "svn",
+        "url": "http://svn.tibco.com:8008/gi/trunk/internal/ux/UXProjects/ng-apix/"
+    },
+    "devDependencies": {
+        "del": "1.1.x",
+        "extend": "2.0.x",
+        "gulp": "3.8.x",
+        "gulp-angular-templatecache": "1.4.x",
+        "gulp-autoprefixer": "2.0.x",
+        "gulp-concat": "2.4.x",
+        "gulp-concat-css": "1.1.x",
+        "gulp-group-aggregate": "0.0.x",
+        "gulp-html-replace": "1.4.x",
+        "gulp-if": "1.2.x",
+        "gulp-imagemin": "1.2.x",
+        "gulp-jasmine": "1.x",
+        "gulp-jshint": "1.9.x",
+        "gulp-jshint-html-reporter": "0.1.x",
+        "gulp-karma": "0.x",
+        "gulp-minify-css": "0.3.x",
+        "gulp-protractor": "0.0.x",
+        "gulp-sass": "1.1.x",
+        "gulp-uglify": "1.0.x",
+        "gulp-util": "3.0.x",
+        "gulp-webserver": "0.9.x",
+        "imagemin-pngquant": "4.0.x",
+        "karma": "0.12.x",
+        "karma-chrome-launcher": "0.1.x",
+        "karma-firefox-launcher": "0.1.x",
+        "karma-jasmine": "0.3.x",
+        "karma-ng-html2js-preprocessor": "0.1.x",
+        "karma-phantomjs-launcher": "0.1.x",
+        "karma-spec-reporter": "0.0.x",
+        "phantomjs": "1.9.x",
+        "vinyl-map": "1.0.x"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {}
+}

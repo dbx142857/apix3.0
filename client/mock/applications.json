@@ -1,0 +1,33 @@
+[
+    {
+        "id":"app1",
+        "name":"App 1",
+        "description":"A social application for managing your personal library and book reviews.",
+        "created":"1388476800000",
+        "updated":"1388476800000",
+        "ownerOrganization":{
+            "id":"org1",
+            "name":"Organization 1",
+            "type":"Host"
+        },
+        "useOAuth":"false",
+        "redirectURL":"/somepath/to/somewhere",
+        "thumbnail":"assets/images/1384829872_iLib.jpg"
+    },
+    {
+        "id":"app2",
+        "name":"App 2",
+        "description":"My app2 description",
+        "created":"1388476800000",
+        "updated":"1388476800000",
+        "ownerOrganization":{
+            "id":"org1",
+            "name":"Organization 1",
+            "type":"Host"
+        },
+        "useOAuth":"false",
+        "redirectURL":"/somepath/to/somewhere",
+        "thumbnail":"assets/images/1384829872_iLib.jpg"
+    }
+]
+

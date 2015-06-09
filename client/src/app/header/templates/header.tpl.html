@@ -1,0 +1,69 @@
+<header ng-controller="HeaderController">
+    <div class="navbar">
+        <div class="uxpl_header">
+            <img src="assets/images/logo_header_placeholder.png" />
+            <ul class="nav pull-right" ng-controller="LoginController">
+                <li class="btn-group" dropdown ng-cloak is-open="oStatus.bLogoutOpen" ng-show="bLoggedIn">
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                        Hello, {{oUser.username}}<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li>
+                            <form class="uxpl_login_form">
+                                <div>
+                                    <a ng-click="logout()">Log Out</a>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li class="btn-group" dropdown ng-cloak is-open="oStatus.bCreateOpen" ng-hide="bLoggedIn">
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle
+                            translate="header.BUTTON_CREATE_A_NEW_ACCOUNT"></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li>
+                            <form class="uxpl_login_form">
+                                <input type="text" name="firstname" placeholder="First name">
+                                <input type="text" name="lastname" placeholder="Last name">
+                                <input type="text" name="email" placeholder="Email">
+                                <input type="text" name="password" placeholder="Password">
+
+                                <div>
+                                    <a ng-click="" translate="header.BUTTON_CREATE"></a>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <li class="btn-group" dropdown ng-cloak is-open="oStatus.bLoginOpen" ng-hide="bLoggedIn">
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle
+                            translate="header.BUTTON_LOGIN"></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li>
+                            <form class="uxpl_login_form" name="login-form" ng-submit="login()">
+                                <input type="text" name="email" placeholder="Email" ng-model="oUser.username"
+                                       tabindex="1">
+                                <input type="password" name="password" placeholder="Password"
+                                       ng-model="oUser.password" tabindex="2">
+
+                                <div ng-show="sStatusMessage">
+                                    <span style="font-family: Open Sans Regular; font-size: 12px; color: #eb5448;">{{sStatusMessage}}</span>
+                                </div>
+                                <div style="vertical-align: middle; box-sizing: border-box;">
+                                    <a class="uxpl_login_a" ng-click="login()">Log In</a>
+                                    <input style="margin-bottom: 4px" type="checkbox" name="rememberme" />
+                                    <label style="color: #a6a6a6; padding-top: 7px">Remember me</label>
+                                </div>
+                                <div>
+                                    <a style="word-wrap: normal" ng-click="">Forgot password</a>
+                                </div>
+                                <input type="submit"
+                                       style="position: absolute; left: -9999px; width: 1px; height: 1px;" />
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

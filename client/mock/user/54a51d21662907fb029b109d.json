@@ -1,0 +1,28 @@
+{
+    "_id": "54a51d21662907fb029b109d",
+    "created": "1420107041000",
+    "updated": "1420107041000",
+    "firstName": "john",
+    "lastName": "smith",
+    "username": "byu",
+    "password": "su5gNwrVfZvDh36QJMUHq5kwOmQ=",
+    "email": "jsmith@nowwhere.com",
+    "telephone": "1-650-123-1231",
+    "lastVisited": "1420107041000",
+    "status": "Active",
+    "organizations": [
+        {
+            "name": "org1",
+            "type": "host",
+            "role": "develpor"
+        }
+    ],
+    "createdBy": {
+        "id": "1",
+        "firstName": "John",
+        "lastName": "Smith",
+        "username": "jsmith",
+        "email": "jsmith@nowhere.com",
+        "telephone": "1-650-867-7443"
+    }
+}

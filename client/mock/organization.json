@@ -1,0 +1,144 @@
+{
+    "id":"org1",
+    "name":"Organization 1",
+    "description":"Description of Organization 1",
+    "created":"1388476800000",
+    "updated":"1388476800000",
+    "createdBy":{
+        "id":"user1",
+        "firstName":"John",
+        "lastName":"Smith",
+        "username":"jsmith",
+        "email":"jsmith@nowhere.com",
+        "telephone":"1-650-867-7443"
+    },
+    "contact":{
+        "id":"user1",
+        "firstName":"John",
+        "lastName":"Smith",
+        "username":"jsmith",
+        "email":"jsmith@nowhere.com",
+        "telephone":"1-650-867-7443"
+    },
+    "hasDownstreamSubscriptions":"true",
+    "type":"Host",
+    "email":"org1@nowhere.com",
+    "threshold":{
+        "name":"warning",
+        "value":"80%"
+    },
+    "contactDetails":{
+        "address":{
+            "country":"United States",
+            "state":"CA",
+            "city":"Palo Alto",
+            "zip":"99999",
+            "address1":"3303 Hillview Ave",
+            "address2":""
+        },
+        "telephone":"1-650-555-5555"
+    },
+
+    "members":[
+        {
+            "id":"user1",
+            "created":"1388476800000",
+            "updated":"1388476800000",
+            "firstName":"John",
+            "lastName":"Smith",
+            "username":"jsmith",
+            "email":"jsmith@nowhere.com",
+            "telephone":"1-650-867-7443",
+            "role":"Product Manager",
+            "organizations":[
+                {
+                    "id":"org1",
+                    "name":"Organization 1",
+                    "role":"Admin"
+                },
+                {
+                    "id":"org2",
+                    "name":"Organization 2",
+                    "role":"Member"
+                }
+            ],
+            "lastVisited":"1388476800000",
+            "status":"Active"
+        },
+        {
+            "id":"user2",
+            "created":"1388476800000",
+            "updated":"1388476800000",
+            "firstName":"Jane",
+            "lastName":"Doe",
+            "username":"jdoe",
+            "email":"jdoe@nowhere.com",
+            "telephone":"1-650-867-7444",
+            "role":"Member",
+            "organizations":[
+                {
+                    "id":"org1",
+                    "name":"Organization 1",
+                    "role":"Member"
+                },
+                {
+                    "id":"org2",
+                    "name":"Organization 2",
+                    "role":"Member"
+                }
+            ],
+            "lastVisited":"1388476800000",
+            "status":"Active"
+        }
+    ],
+    "subscriptions":[
+        {
+            "id":"sub1",
+            "name":"Subscription 1 to Product 1 Community Plan",
+            "description":"Description text for Subscription 1",
+            "product":{
+                "id":"prod1",
+                "name":"Product 1"
+            },
+            "plan":{
+                "id":"plan1",
+                "name":"Community",
+                "description":"Description of Community plan",
+                "level":"1",
+                "rateLimit":"20",
+                "quotaLimit":"500",
+                "price":"FREE",
+                "autoSubscribe":"true"
+            },
+            "start":"1388476800000",
+            "end":"1546243200000",
+            "status":"Active"
+        },
+        {
+            "id":"sub2",
+            "name":"Subscription 2 to Product 1 Community Plan",
+            "description":"Description text for Subscription 2",
+            "product":{
+                "id":"prod1",
+                "name":"Product 1"
+            },
+            "plan":{
+                "id":"plan2",
+                "name":"Gold",
+                "description":"Description of Gold plan",
+                "level":"3",
+                "rateLimit":"50",
+                "quotaLimit":"5000",
+                "price":"$99.99",
+                "autoSubscribe":"false"
+            },
+            "start":"1388476800000",
+            "end":"1546243200000",
+            "status":"Active"
+        }
+    ],
+    "alerts":{
+        "description":"You have no alerts avaliable.",
+        "time":"2014-05-22 06:35:56"
+    }
+}

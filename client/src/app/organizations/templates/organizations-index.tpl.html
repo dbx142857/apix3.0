@@ -1,0 +1,129 @@
+<!-- organization toolbar S -->
+<div class="row-fluid tool-bar">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" ng-click="orgCreateForm.$show()" ng-show='!orgCreateForm.$visible'>Create New Organization</button>
+        <span ng-show="orgCreateForm.$visible">
+            <button type="submit" class="btn btn-primary" ng-disabled="orgCreateForm.$waiting" ng-click="fOrganizationsCreate(); orgCreateForm.$hide();">Save</button>
+            <button type="button" class="btn btn-default" ng-disabled="orgCreateForm.$waiting" ng-click="orgCreateForm.$cancel()">Cancel</button>
+        </span>
+    </div>
+    
+
+    <div class="col-md-3 col-md-offset-6">
+        <input type="text" class="pull-left search-input" />
+        <div dropdown ng-cloak is-open="oStatus.bLogoutOpen">
+            <a class="dropdown-toggle" dropdown-toggle>
+                <span class="glyphicon glyphicon-stats" style="color:#fff;"></span>
+            </a>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" >Order By Time Create</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" >Order By Time Modified</a></li>
+                <li role="presentation"><a role="mneuitem" tabindex="-1" href="#" >Title</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- create organization form S -->
+    <div class="clearfix"></div>
+    <form editable-form name="orgCreateForm" ng-show="orgCreateForm.$visible" onaftersave="saveOrganization()" class="edit">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2 text-left"><span style="color: #f00;">*</span><strong>Title</strong></div>
+            <div class="col-md-8">
+                <input type="text" ng-model="organization.name" required />
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-md-2 col-md-offset-2 text-left"><strong>Enviroments</strong></span>
+            <span class="col-md-6 alert1" name="alert">
+            You cannot submit this field
+            </span>
+        </div>
+        <div class="row">
+            <span class="col-md-2 col-md-offset-2 text-left"><strong>Description</strong></span>
+            <div class="col-md-8">
+                <textarea class="col-md-8" row="10" ng-model="organization.description">
+                </textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2 text-left"><span style="color: #f00;">*</span><strong>Organization Type</strong></div>
+            <div class="col-md-8">
+                <select ng-options = "orgType for orgType in orgTypes" ng-model="organization.type">
+                    <option value="">- Select Element -</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2 text-left"><span style="color: #f00;">*</span><strong>Email</strong></div>
+            <div class="col-md-8">
+                <input type="email" ng-model="organization.createdBy.email" required>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-md-2 col-md-offset-2 text-left"><strong>Usage alert threshold</strong></span>
+            <div class="col-md-8">
+                <input  type="text" ng-model="organization.threshold.value" />
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-md-2 col-md-offset-2 text-left"><strong>Contact details</strong></span>
+            <span class="col-md-8">
+            <h5>Address</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <small>Country</small><br/>
+                    <select name="country" ng-options="country for country in countries" ng-model="organization.contactDetails.address.country">
+                        <option value="">- Select Country -</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <small>State</small><br/>
+                    <input type="text" name="state" ng-model="organization.contactDetails.address.state" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <small>City</small><br/>
+                    <input type="text" name="city" ng-model="organization.contactDetails.address.city" />
+                </div>
+                <div class="col-md-6">
+                    <small>Zip</small><br/>
+                    <input type="text" name="zip" ng-model="organization.contactDetails.address.zip" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <small>Address1</small><br/>
+                    <input type="text" name="address1" ng-model="organization.contactDetails.address.address1" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <small>Address2</small><br/>
+                    <input type="text" name="address2" ng-model="organization.contactDetails.address.address2" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <small>Instant Contacts</small><br/>
+                    Telephone 
+                    <input type="text" name="telephone" ng-model="organization.contactDetails.telephone" />
+                </div>
+            </div>
+            </span>
+        </div>
+    </form>
+    <!-- create organization form E -->
+<!-- organization toolbar E -->
+
+<cards-layout
+        num-of-column="3"
+        dialog-template-url= 'app/organizations/templates/organizations-dialog.tpl.html'
+        card-template-url= 'app/organizations/templates/organizations-cards.tpl.html'
+        apix-data="organizations"
+        dialog-scope="dialogScope"
+        class="apixCardBox clearfix"
+        >
+</cards-layout>
+

@@ -1,0 +1,79 @@
+{
+    "id": "env1",
+    "name": "Test Environment",
+    "description": "Description of Test Environment",
+    "created": "1388476800000",
+    "updated": "1388476800000",
+    "createdBy": {
+        "id": "user1",
+        "firstName": "John",
+        "lastName": "Smith",
+        "username": "jsmith",
+        "email": "jsmith@nowhere.com",
+        "telephone": "1-650-867-7443"
+    },
+    "ownerOrganization": {
+        "id": "org1",
+        "name": "Organization 1",
+        "type": "Host"
+    },
+    "contact": {
+        "id": "user1",
+        "firstName": "John",
+        "lastName": "Smith",
+        "username": "jsmith",
+        "email": "jsmith@nowhere.com",
+        "telephone": "1-650-867-7443"
+    },
+    "hasDownstreamSubscriptions": "true",
+    "type1": "3",
+    "types": [{
+        "value": 1,
+        "text": "Development"
+    }, {
+        "value": 2,
+        "text": "Production"
+    }, {
+        "value": 3,
+        "text": "Sandbox"
+    }, {
+        "value": 4,
+        "text": "Staging"
+    }, {
+        "value": 5,
+        "text": "Testing"
+    }],
+    "basepath": "/some/path",
+    "gateways": [{
+        "id": "gate1",
+        "name": "Gateway 1",
+        "description": "Description of Gateway 1",
+        "environment": {
+            "id": "env1",
+            "name": "Test Environment"
+        },
+        "managementURL": "/some/url"
+    }, {
+        "id": "gate2",
+        "name": "Gateway 2",
+        "description": "Description of Gateway 2",
+        "environment": {
+            "id": "env1",
+            "name": "Production Environment"
+        },
+        "managementURL": "/some/other/url"
+    }],
+    "products": [{
+        "id": "prod1",
+        "name": "Product 1",
+        "description": "Description of Product 1",
+        "thumbnail": "assets/images/icon/ic_ProductReview_OpenAPI.png",
+        "featured": "true"
+    }, {
+        "id": "prod2",
+        "name": "Product 2",
+        "description": "Description of Product 2",
+        "thumbnail": "assets/images/icon/ic_ProductReview_OpenAPI.png",
+        "featured": "false"
+    }]
+}

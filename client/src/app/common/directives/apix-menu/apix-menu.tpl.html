@@ -1,0 +1,8 @@
+<nav class="menu">
+    <ul>
+        <li ng-repeat="oItem in aMenuItems">
+            <a href="{{oItem.sHref}}" class="btn btn-primary" ng-class="{active: oItem.bActive}"
+               ng-click="selectMenuItem(oItem)">{{oItem.sLabel}}</a>
+        </li>
+    </ul>
+</nav>

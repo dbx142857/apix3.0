@@ -1,0 +1,10 @@
+{
+    "header": {
+        "BUTTON_CREATE": "Create",
+        "BUTTON_CREATE_A_NEW_ACCOUNT": "Create a new account",
+        "BUTTON_FORGOT_PASSWORD": "Forgot password",
+        "BUTTON_LOGIN": "Login",
+        "BUTTON_LOGOUT": "Logout",
+        "LABEL_REMEMBER_ME": "Remember me"
+    }
+}

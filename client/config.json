@@ -1,0 +1,94 @@
+{
+    "assets": "assets",
+    "dist": "./dist",
+    "images": {
+        "src": "./src/assets/images/*",
+        "dist": "./dist/assets/images"
+    },
+    "index": "./src/index.html",
+    "js": "js",
+    "karma": {
+        "configFileName": "karma.conf.js",
+        "commonFiles": [
+            "src/app/common/**/*.js",
+            "src/app/common/**/*.tpl.html"
+        ],
+        "e2eTestSpecs": [
+            "test/e2e/**/*.spec.js"
+        ],
+        "featureFiles": [],
+        "vendorFiles": [
+            "vendor/angular/angular.js",
+            "vendor/angular-animate/angular-animate.min.js",
+            "vendor/angular-route/angular-route.min.js",
+            "vendor/angular-resource/angular-resource.min.js",
+            "vendor/angular-mocks/angular-mocks.js"
+        ],
+        "unitTestSpecs": [
+            "test/spec/**/*.spec.js"
+        ]
+    },
+    "locales": {
+        "src": [
+            "./src/app/**/locales/lang.*.json"
+        ],
+        "watch": [
+            "./src/app/**/locales/lang.*.json"
+        ],
+        "prefix": "lang.",
+        "suffix": ".json",
+        "keys": [
+            "en_US"
+        ],
+        "dest": "./src/locales",
+        "dist": "./dist/locales"
+    },
+    "modules": [
+        "apix.directives.menu",
+        "apix.services.data",
+        "apix.services.authentication",
+        "apix",
+        "home",
+        "organizations",
+        "members",
+        "applications"
+    ],
+    "scripts": {
+        "src": [
+            "./src/app/**/*.js"
+        ],
+        "srcModuleDefFirst": [
+            "./src/app/**/*.module.js",
+            "./src/app/common/**/*.js",
+            "./src/app/**/*.js"
+        ],
+        "watch": [
+            "./src/app/**/*.js"
+        ],
+        "output": "apix-all.js",
+        "outputMin": "apix-all.min.js",
+        "dest": "./dist/js",
+        "dist": "./dist/js"
+    },
+    "styles": {
+        "src": [
+            "./src/scss/**/*.scss",
+            "./vendor/bootstrap-sass-official/assets/stylesheets/**/*.scss"
+        ],
+        "watch": [
+            "./src/scss/**/*.scss"
+        ],
+        "output": "main.css",
+        "outputMin": "main.min.css",
+        "dest": "./src/assets",
+        "dist": "./dist/assets"
+    },
+    "templates": {
+        "src": [
+            "./src/app/**/*.tpl.html"
+        ],
+        "output": "templates.js",
+        "outputMin": "templates.min.js",
+        "templatesModuleName": "__apix.templates__"
+    }
+}

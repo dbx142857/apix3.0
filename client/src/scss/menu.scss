@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@import "includes/variables";
+@import "includes/mixins";
+
+.menu {
+    background-color: $bg-blue;
+
+    > ul {
+        margin: 0;
+        padding: 10px 50px;
+
+        > li {
+            color: #FFFFFF;
+            display: inline-block;
+            list-style: none;
+            margin-left: 5px;
+
+            &.ng-enter {
+                opacity: 0;
+                transition: opacity 200ms;
+            }
+
+            &.ng-enter.ng-enter-active {
+                opacity: 1;
+            }
+
+            &.ng-leave {
+                opacity: 1;
+                transition: opacity 200ms;
+            }
+
+            &.ng-leave.ng-leave-active {
+                opacity: 0;
+            }
+
+            > a.btn.btn-primary {
+                background-color: transparent;
+                border: none;
+                transition: background-color 200ms;
+
+                &.active {
+                    background-color: #286090;
+                }
+
+                &:hover {
+                    background-color: $hover-blue;
+                }
+            }
+        }
+    }
+}

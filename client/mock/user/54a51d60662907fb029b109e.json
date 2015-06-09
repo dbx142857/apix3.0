@@ -1,0 +1,28 @@
+{
+    "_id": "54a51d60662907fb029b109e",
+    "created": "1420107104000",
+    "updated": "1420107104000",
+    "firstName": "Kevin",
+    "lastName": "Li",
+    "username": "byu",
+    "password": "fEqNCco3Yq9h5ZUglD3CZJT4lBs=",
+    "email": "huali@tibco-support.com",
+    "telephone": "1-650-123-1231",
+    "lastVisited": "1420107104000",
+    "status": "Active",
+    "organizations": [
+        {
+            "name": "org1",
+            "type": "host",
+            "role": "develpor"
+        }
+    ],
+    "createdBy": {
+        "id": "1",
+        "firstName": "John",
+        "lastName": "Smith",
+        "username": "jsmith",
+        "email": "jsmith@nowhere.com",
+        "telephone": "1-650-867-7443"
+    }
+}

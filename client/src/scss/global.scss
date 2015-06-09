@@ -1,0 +1,335 @@
+@charset "UTF-8";
+
+@import "includes/variables";
+@import "includes/mixins";
+
+html, body {
+    background-color: #F5F6F7;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+}
+
+form.edit {
+
+    input[type="text"],input[type="password"], select, textarea {
+        display: inline-block;
+        width: 50%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        color: #555555;
+        background-image: none;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.navbar {
+    border: none;
+    margin-bottom: 0;
+
+    &-inner {
+        background: {
+            color: #26A2ED;
+            image: none;
+            repeat: no-repeat;
+        }
+        filter: none;
+        padding: {
+            right: 0;
+            left: 12px;
+        }
+    }
+
+    .nav {
+        > li {
+            > button {
+                background-color: transparent;
+                border: none;
+                font: {
+                    family: $font-open-sans;
+                    size: 12px;
+                    weight: 600;
+                }
+                color: #FFFFFF;
+                text-decoration: none;
+                text-shadow: 0 0 0 rgb(0, 0, 0);
+                transition: background-color 200ms;
+
+                &:focus {
+                    background-color: transparent;
+                }
+
+                &:hover {
+                    background-color: $hover-blue;
+                    color: #FFFFFF;
+                    text-decoration: none;
+                }
+            }
+
+            &.open, &.active, &.open.active {
+                > .dropdown-toggle {
+                    background-color: transparent;
+                    color: #FFFFFF;
+
+                    .uxpl_main_login_a {
+                        background-color: $hover-blue;
+                    }
+                }
+            }
+        }
+
+        &.pull-right {
+            margin-top: -5px;
+
+            > li {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.dropdown-menu {
+    font: {
+        family: $font-open-sans;
+        size: 12px;
+        weight: 600;
+    }
+    color: #26A2ED;
+    padding: 0 20px 20px 20px;
+    border-radius: 3px;
+
+    > li > button {
+        color: #26A2ED
+    }
+}
+
+.uxpl_header {
+    background: {
+        color: $bg-blue;
+        repeat: repeat-x;
+    }
+    padding: {
+        top: 20px;
+        right: 60px;
+        bottom: 20px;
+        left: 60px;
+    }
+
+    img {
+        @include img-vertical-align();
+    }
+}
+
+.uxpl_brand {
+    font: {
+        style: normal;
+        family: "Gotham Book";
+        size: 22px;
+    }
+    color: #FFFFFF;
+    padding: {
+        top: 4px;
+        right: 0;
+        bottom: 0;
+        left: 10px;
+    }
+    vertical-align: middle;
+}
+
+.uxpl_login_form {
+    padding: 0;
+    margin: 0;
+
+    > input {
+        margin: 20px 0 0 !important;
+        width: 160px !important
+    }
+
+    > div {
+        margin: 15px 0 0 !important;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+
+.uxpl_login_a {
+    background-color: #DEF5FD;
+    box-sizing: border-box;
+    color: #0F93D4;
+    display: inline-block;
+    font: {
+        style: normal;
+        weight: 600;
+        family: $font-open-sans;
+        size: 12px;
+    }
+    height: 30px !important;
+    margin-right: 4px;
+    padding-top: 5px;
+    text-align: center;
+    width: 53px !important;
+
+    &:hover {
+        background-color: #D7F0F9;
+    }
+}
+
+.uxpl_main_login_a {
+    padding: 10px;
+
+    &:hover {
+        background-color: $hover-blue;
+    }
+}
+
+footer {
+    color: #666666;
+    background-color: #FFFFFF;
+    padding: 0 0 0 0;
+    margin: 45px 0 0 0;
+    position: relative;
+    bottom: 0;
+
+    a {
+        color: #FFFFFF;
+
+        &:hover {
+            color: #EFEFEF;
+        }
+    }
+}
+
+.uxpl_footer {
+    background: {
+        color: $bg-blue;
+        repeat: repeat-x;
+    }
+    height: 22px;
+    padding: 0 0 0 60px;
+
+    img {
+        @include img-vertical-align();
+    }
+
+    > span {
+        text-align: center;
+        font-family: $font-open-sans;
+        font-size: 10px;
+        color: #FFFFFF;
+        margin: 0 0 0 10px;
+    }
+}
+
+/* Organization */
+form[editable-form] {
+    padding: 20px 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    h3 {
+        cursor: pointer;
+        margin: 0;
+        padding: 20px 10px;
+        background: #f6f6f6;
+    }
+
+}
+
+.alert1 {
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 18px;
+    margin-left: 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    border-radius: 4px;
+    color: #c09853;
+}
+
+.profile-content a {
+    color: #fff;
+}
+
+/*list style*/
+.row-fluid.tool-bar {
+    padding: 10px 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+    background: #89C1FF;
+    height: 50px;
+    .search-input {
+        margin-right: 10px;
+    }
+}
+
+.apixCardBox {
+    margin: 0 auto;
+    width: 1200px;
+    .list-box {
+        margin: 10px;
+        height: 130px;
+        cursor: pointer;
+        .list-content {
+            padding-top: 25px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: 300;
+            transition: transform 0.35s;
+        }
+    }
+}
+
+/* modal-dialog */
+.modal-dialog{
+    >.modal-content{
+        width: 960px !important;
+        padding: 0 20px;
+    }
+}
+
+/*contenEditable*/
+form[editableForm] > div {
+    height: auto;
+    padding: 5px 10px;
+}
+
+form[editableForm] .editable {
+    display: inline-block;
+    padding-top: 5px;
+    vertical-align: top;
+}
+
+form[editableForm] select {
+    width: 120px;
+}
+
+.banner {
+    padding: {
+        bottom: 15px;
+        left: 0;
+        right: 0;
+        top: 15px;
+    }
+    text-align: center;
+}
+
+.error-404 {
+    text-align: center;
+}
+
+form .error {
+    color: red;
+    display: inline;
+}
+

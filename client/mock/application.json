@@ -1,0 +1,139 @@
+{
+    "id":"app1",
+    "name":"App 1",
+    "description":"My app description",
+    "created":"1388476800000",
+    "updated":"1388476800000",
+    "createdBy":{
+        "id":"user1",
+        "firstName":"John",
+        "lastName":"Smith",
+        "username":"jsmith",
+        "email":"jsmith@nowhere.com",
+        "telephone":"1-650-867-7443"
+    },
+    "ownerOrganization":{
+        "id":"org1",
+        "name":"Organization 1",
+        "type":"Host"
+    },
+    "contact":{
+        "id":"user1",
+        "firstName":"John",
+        "lastName":"Smith",
+        "username":"jsmith",
+        "email":"jsmith@nowhere.com",
+        "telephone":"1-650-867-7443",
+        "name":"Host Administrator",
+        "description":"A social application for managing your personal library and book reviews."
+    },
+    "useOAuth":"false",
+    "redirectURL":"/somepath/to/somewhere",
+    "thumbnail":"assets/images/1384829872_iLib.jpg",
+    "products":[
+        {
+            "id":"prod1",
+            "name":"Product 1",
+            "description":"Description text for Subscription 1",
+            "thumbnail":"assets/images/icon/ic_ProductReview_OpenAPI.png",
+            "subscription":{
+                "id":"sub1",
+                "name":"Subscription 1 to Product 1 Community Plan",
+                "organization":{
+                    "id":"org1",
+                    "name":"Organization 1"
+                },
+                "plan":{
+                    "id":"plan1",
+                    "name":"Community",
+                    "description":"Description of Community plan",
+                    "level":"1",
+                    "rateLimit":"20",
+                    "quotaLimit":"500",
+                    "price":"FREE / mo",
+                    "autoSubscribe":"true"
+                },
+                "start":"1388476800000",
+                "end":"1546243200000",
+                "status":"Active"
+            }
+        },
+        {
+            "id":"prod2",
+            "name":"Product 2",
+            "description":"Description text for Subscription 2",
+            "thumbnail":"assets/images/icon/ic_ProductReview_OpenAPI.png",
+            "subscription":{
+                "id":"sub2",
+                "name":"Subscription 2 to Product 2 Gold Plan",
+                "plan":{
+                    "id":"plan2",
+                    "name":"Gold",
+                    "description":"Description of Gold plan",
+                    "level":"3",
+                    "rateLimit":"50",
+                    "quotaLimit":"5000",
+                    "price":"$99.99",
+                    "autoSubscribe":"false"
+                },
+                 "start":"1388476800000",
+                "end":"1546243200000",
+                "status":"Active"
+            }
+        }
+    ],
+    "keys":[
+        {
+            "id":"key1",
+            "created":"1388476800000",
+            "createdBy":{
+                "id":"user1",
+                "firstName":"John",
+                "lastName":"Smith",
+                "username":"jsmith",
+                "email":"jsmith@nowhere.com",
+                "telephone":"1-650-867-7443"
+            },
+            "type:":"KeyType1",
+            "keyValue":"237-efd468a7-9fa4-4f74-baa7-2a8a2f946f73",
+            "secret":"KeySecret1",
+            "expiration":"1388476800000",
+            "status":"Inactive",
+            "application":{
+                "id":"app1",
+                "name":"App 1"
+            }
+        },
+        {
+            "id":"key2",
+            "created":"1388476800000",
+            "createdBy":{
+                "id":"user1",
+                "firstName":"John",
+                "lastName":"Smith",
+                "username":"jsmith",
+                "email":"jsmith@nowhere.com",
+                "telephone":"1-650-867-7443"
+            },
+            "type:":"KeyType2",
+            "keyValue":"kj46bkl2b6nl43bn23b",
+            "secret":"KeySecret2",
+            "expiration":"1388476800000",
+            "status":"Active",
+            "application":{
+                "id":"app1",
+                "name":"App 1"
+            }
+        }
+    ],
+    "scopes":[
+        {
+            "id":"scope1",
+            "name":"Scope 1"
+        },
+        {
+            "id":"scope2",
+            "name":"Scope 2"
+        }
+    ]
+}

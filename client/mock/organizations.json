@@ -1,0 +1,46 @@
+[
+    {
+        "_id": "54a51e73662907fb029b10a0",
+        "name": "org1",
+        "description": "The organization is all new registraion user. No anyway permission",
+        "created": "1420107379000",
+        "updated": "1420107379000",
+        "type": "host",
+        "subscriptions": [],
+        "members": [
+            "54a235f3251f44d004baafcd"
+        ],
+        "contactDetails": {
+            "telephone": "+8612382368234",
+            "address": {
+                "country": "United States",
+                "state": "CA",
+                "city": "Palo Alto",
+                "zip": "99999",
+                "address1": "3303 Hillview ave",
+                "address2": " "
+            }
+        },
+        "threshold": {
+            "name": "warning",
+            "value": "80"
+        },
+        "hasDownstreamSubscriptions": true,
+        "contact": {
+            "id": "54a235f3251f44d004baafcd",
+            "firstName": "john",
+            "lastName": "smith",
+            "username": "byu",
+            "email": "jsmith@nowwhere.com",
+            "telephone": "1-650-123-1231"
+        },
+        "createdBy": {
+            "id": "54a235f3251f44d004baafcd",
+            "firstName": "host",
+            "lastName": "administrator",
+            "username": "admin",
+            "email": "admin@local.host",
+            "telephone": "+86110"
+        }
+    }
+]

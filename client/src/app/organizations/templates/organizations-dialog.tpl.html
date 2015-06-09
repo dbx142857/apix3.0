@@ -1,0 +1,405 @@
+<!-- organization dialog S -->
+<div type="text/ng-template" id="organizationDialog" ng-controller="OrganizationsController"> 
+<div class="container-fluid dialogContent">
+    <div class="row">
+        <div class="page-header"><h1 ng-bind="promiseItem.name"></h1></div>
+    </div>
+    <div class="row-fluid tool-bar">
+        <div class="col-md-4">
+            <button class="btn btn-primary" >Re-Sync</button>
+            <button class="btn btn-primary" >Show Statistics</button>
+        </div>
+        <div class="col-md-3 col-md-offset-5">
+            <button type="button" class="btn btn-default" ng-click="orgEditableForm.$show()" ng-show='!orgEditableForm.$visible'>Edit</button>
+            <span ng-show="orgEditableForm.$visible">
+            <button type="submit" class="btn btn-primary" ng-disabled="orgEditableForm.$waiting" ng-click="fOrganizationsUpdate(); orgEditableForm.$hide(); ">Save</button>
+            <button type="button" class="btn btn-default" ng-disabled="orgEditableForm.$waiting" ng-click="orgEditableForm.$cancel()">Cancel</button>
+            </span>
+        </div>
+    </div>
+    <!-- edit organization form S -->
+    <form editable-form name="orgEditableForm" ng-show="orgEditableForm.$visible" onaftersave="saveOrganization()" class="edit">
+        <div class="row">
+            <span class="col-md-4 text-right"><strong>Enviroments</strong></span>
+            <span class="col-md-6 alert1" name="alert">
+            You cannot edit this field
+            </span>
+        </div>
+        <div class="row">
+            <span class="col-md-4 text-right"><strong>Description</strong></span>
+            <div class="col-md-8">
+                <textarea class="col-md-8" row="10" ng-model="promiseItem.description" >
+                    {{promiseItem.description}}
+                </textarea>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-md-4 text-right"><strong>Organization Type</strong></span>
+            <div class="col-md-8">
+                <select ng-options = "orgType for orgType in orgTypes" ng-model="promiseItem.type">
+                    <option value="">- Select Element -</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-md-4 text-right"><strong>Usage alert threshold</strong></span>
+            <div class="col-md-8">
+                <input type="text" ng-model="promiseItem.threshold.value" value="{{promiseItem.threshold.value}}" name="usage" ></span>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-md-4 text-right"><strong>Contact details</strong></span>
+            <span class="col-md-8">
+            <h5>Address</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <small>Country</small><br/>
+                    <select name="country" ng-options="country for country in countries" ng-model="promiseItem.contactDetails.address.country">>
+                        <option value="">- Select Country -</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <small>State</small><br/>
+                    <input type="text" name="state" ng-model="promiseItem.contactDetails.address.state" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <small>City</small><br/>
+                    <input type="text" name="city" ng-model="promiseItem.contactDetails.address.city" />
+                </div>
+                <div class="col-md-6">
+                    <small>Zip</small><br/>
+                    <input type="text" name="zip" ng-model="promiseItem.contactDetails.address.zip" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <small>Address1</small><br/>
+                    <input type="text" name="address1" ng-model="promiseItem.contactDetails.address.address1" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <small>Address2</small><br/>
+                    <input type="text" name="address2" ng-model="promiseItem.contactDetails.address.address2" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <small>Instant Contacts</small><br/>
+                    Telephone
+                     <input type="text" name="telephone" ng-model="promiseItem.contactDetails.telephone" />
+                </div>
+            </div>
+            </span>
+        </div>
+    </form>
+    <!-- edit organization form E -->
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="org-title">Application</h3>
+            <table  class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width:20%;">Applications</th>
+                        <th style="width:20%;">Products</th>
+                        <th style="width:40%;">Plans</th>
+                        <th style="width:30%;">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 class="org-title">Subscriptions</h3>
+            <table  class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width:20%;">Subscriptions</th>
+                        <th style="width:30%;">Subscription period</th>
+                        <th style="width:30%;">Plans</th>
+                        <th style="width:20%;">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="orgSubscription in promiseItem.subscriptions">
+                        <td class="col-md-3">
+                            <span ng-bind="orgSubscription.name"></span>
+                        </td>
+                        <td class="col-md-3">
+                            <span>From</span>
+                            <span ng-bind="orgSubscription.start"></span>
+                            <br>
+                            <span ng-bind-html="'TO' | translate">To</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span ng-bind="orgSubscription.end"></span>
+                        </td>
+                        <td class="col-md-3">
+                            <span ng-bind="orgSubscription.plan.name" class="org-plan"></span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span ng-bind="orgSubscription.plan.quotaLimit"></span>
+                            <span>/day</span>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span ng-bind="orgSubscription.plan.rateLimit"></span>
+                            <span>/s</span>
+                        </td>
+                        <td class="col-md-3">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <button class="btn btn-primary pull-left" type="button" ng-click="subEditableForm.$show()" ng-show='!subEditableForm.$visible'>
+                            <span>New Subscription</span>
+                            </button>
+                            <span ng-show="subEditableForm.$visible">
+                            <button type="submit" class="btn btn-primary" ng-disabled="subEditableForm.$waiting">Save</button>
+                            <button type="button" class="btn btn-default" ng-disabled="subEditableForm.$waiting" ng-click="subEditableForm.$cancel()">Cancel</button>
+                            </span>
+                            <!-- edit subscription form S -->
+                            <form editable-form name="subEditableForm" ng-show="subEditableForm.$visible" class="edit">
+                                <h2>Create New Subscription</h2>
+                                <div class="row">
+                                    <div class="col-md-4 text-right">
+                                        <span>Description</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <textarea name="subDescription" id="" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-right">
+                                        <span>*</span><span>Product</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <span>Book Catalog</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-right">
+                                        <span style="color:#f00;">*</span><span>Plan</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select name="Plan">
+                                            <option value="">- Select Element -</option>
+                                            <option value="gold">Gold</option>
+                                            <option value="silver">Silver</option>
+                                            <option value="Community">community</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-right">
+                                        <span style="color:#f00;">*</span><span>Start date</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p class="input-group">
+                                          <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                          <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                          </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-right">
+                                        <span style="color:#f00;">*</span><span>End date</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p class="input-group">
+                                          <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                          <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                          </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-right">
+                                        <span style="color:#f00;">*</span><span>Subscribging organization</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <span xeditable-text="promiseItem.name" e-name="subName" ng-bind="promiseItem.name"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 text-right">
+                                        <span style="color:#f00;">*</span><span>Status</span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md-3"><input type="radio" name="status" value="active" checked> Active</div>
+                                        <div class="col-md-9"><input type="radio" name="status" value="inactive"> Inactive</div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- edit subscription form E -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h3 class="org-title">Alerts</h3>
+            <p ng-bind="promiseItem.alerts.description"></p>
+            <span ng-bind="promiseItem.alerts.time" class="org-text-info"></span>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-8">
+             <h3 class="org-title"><a href="members?org_id={{promiseItem._id}}" ng-click="closeModal()">Members</a></h3>
+            <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th >Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="orgMember in promiseItem.members">
+                        <td>
+                            <span ng-bind="orgMember.username"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="orgMember.email"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="orgMember.organizations[0].role"></span>
+                        </td>
+                    </tr>
+                   <tr>
+                       <td colspan="3">
+                           <button class="btn btn-primary pull-left" type="button" ng-click="memEditableForm.$show()" ng-show='!memEditableForm.$visible'>
+                           <span>New Member</span>
+                           </button>
+                           <span ng-show="memEditableForm.$visible">
+                           <button type="submit" class="btn btn-primary" ng-disabled="memEditableForm.$waiting" ng-click="fMembersCreate(); memEditableForm.$hide();">Save</button>
+                           <button type="button" class="btn btn-default" ng-disabled="memEditableForm.$waiting" ng-click="memEditableForm.$cancel()">Cancel</button>
+                           </span>
+                          <!--  create member form S -->
+                           <form editable-form name="memEditableForm" ng-show="memEditableForm.$visible" onaftersave="saveMember()" class="edit">
+                              
+                               <div class="row">
+                                   <div class="col-md-4 text-right">
+                                       <span style="color:#f00;">*</span><span>Username</span>
+                                   </div>
+                                   <div class="col-md-8">
+                                       <input type="text" name="username" placeholder="username" ng-model="newMember.username" >
+                                   </div>
+                               </div>
+                   
+                              <div class="row">
+                                  <div class="col-md-4 text-right">
+                                      <span style="color:#f00;">*</span><span>Password</span>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <input type="password" name="password" ng-model="newMember.password" >
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-4 text-right">
+                                      <span style="color:#f00;">*</span><span>Confirm password</span>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <input type="password" name="confirmPassword" ng-model="newMember.confirmPassword">
+                                  </div>
+                              </div>
+
+                                <div class="row">
+                                   <div class="col-md-4 text-right">
+                                       <span style="color:#f00;">*</span><span>Email</span>
+                                   </div>
+                                   <div class="col-md-8">
+                                       <input type="email" name="email" placeholder="email"  ng-model="newMember.email">
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-4 text-right">
+                                       <span style="color:#f00;">*</span><span>First Name</span>
+                                   </div>
+                                   <div class="col-md-8">
+                                       <input type="text" name="firstname" placeholder="firstname"  ng-model="newMember.firstName">
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-4 text-right">
+                                       <span style="color:#f00;">*</span><span>Last Name</span>
+                                   </div>
+                                   <div class="col-md-8">
+                                       <input type="text" name="lastname" placeholder="lastname"  ng-model="newMember.lastName">
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-4 text-right">
+                                       <span style="color:#f00;">*</span><span>Telephone</span>
+                                   </div>
+                                   <div class="col-md-8">
+                                       <input type="text" placeholder="telephone" name="telephone"  ng-model="newMember.telephone">
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-4 text-right">
+                                       <span style="color:#f00;">*</span><span>Member of organizations</span>
+                                   </div>
+                                   <div class="col-md-8">
+                                       <span ng-bind="promiseItem.name"></span>
+                                   </div>
+                               </div>
+                               <div class="row">
+                                   <div class="col-md-4 text-right">
+                                       <span>Role</span>
+                                   </div>
+                                   <div class="col-md-8">
+                                       <select ng-model="newMember.organizations.role" ng-options="role for role in roles">
+                                          <option value="">- Select Element -</option>
+                                        </select>
+                                   </div>
+                               </div>
+                           </form>
+                          <!--  create member form E -->
+                       </td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <table class="table  table-condensed">
+                <thead>
+                    <tr>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="org-contact">
+                            <span  ng-bind="promiseItem.contact.username"></span>
+                            <br>
+                            <span ng-bind="promiseItem.contact.email"></span>
+                            <br>
+                            <span ng-bind="promiseItem.contactDetails.address.address1"></span>
+                            <br>
+                            <span ng-bind="promiseItem.contactDetails.telephone"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<!-- organization dialog S -->
+
+

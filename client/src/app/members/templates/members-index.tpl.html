@@ -1,0 +1,199 @@
+<div>
+<div class="row-fluid tool-bar">
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" ng-click="userCreateForm.$show()" ng-show='!userCreateForm.$visible'>Create New Members</button>
+        <span ng-show="userCreateForm.$visible">
+            <button type="submit" class="btn btn-primary" ng-disabled="userCreateForm.$invalid" ng-click="userCreateForm.$hide();saveMembers()">Save</button>
+            <button type="button" class="btn btn-default" ng-disabled="userCreateForm.$waiting" ng-click="userCreateForm.$cancel()">Cancel</button>
+        </span>
+    </div>
+    
+
+    <div class="col-md-3 col-md-offset-6">
+        <input type="text" class="pull-left search-input" />
+        <div dropdown ng-cloak is-open="oStatus.bLogoutOpen">
+            <a class="dropdown-toggle" dropdown-toggle>
+                <span class="glyphicon glyphicon-stats" style="color:#fff;"></span>
+            </a>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" >Order By Time Create</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#" >Order By Time Modified</a></li>
+                <li role="presentation"><a role="mneuitem" tabindex="-1" href="#" >Title</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div>
+<form editable-form name="userCreateForm" ng-show="userCreateForm.$visible" class="edit">
+  
+   <div class="row">
+       <div class="col-md-4 text-right">
+           <span style="color:#f00;">*</span><span>Username</span>
+       </div>
+       <div class="col-md-8">
+           <input type="text" name="username" placeholder="username" ng-model="member.username" required ng-minlength=3 />
+           <div class="error" ng-show="userCreateForm.username.$dirty && userCreateForm.username.$invalid">
+            <small class="error" ng-show="userCreateForm.username.$error.required">
+                Your name is required.
+            </small>
+            <small class="error" 
+                  ng-show="userCreateForm.username.$error.minlength">
+                  Your name is required to be at least 3 characters
+            </small>          
+          </div>
+       </div>
+   </div>
+
+  <div class="row">
+      <div class="col-md-4 text-right">
+          <span style="color:#f00;">*</span><span>Password</span>
+      </div>
+      <div class="col-md-8">
+          <input type="password" name="password" ng-model="member.password" required>
+          <div class="error" ng-show="userCreateForm.password.$dirty && userCreateForm.password.$invalid">
+            <small class="error" ng-show="userCreateForm.password.$error.required">
+                password is required.
+            </small>          
+          </div>           
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4 text-right">
+          <span style="color:#f00;">*</span><span>Confirm password</span>
+      </div>
+      <div class="col-md-8">
+          <input type="password" name="confirmPassword" ng-model="member.confirmPassword" ng-pattern="member.password" required>
+          <div class="error" ng-show="userCreateForm.confirmPassword.$dirty && userCreateForm.confirmPassword.$invalid">
+            <small class="error" ng-show="userCreateForm.confirmPassword.$error.required">
+                Confirm password is required.
+            </small>
+            <small class="error" 
+                  ng-show="userCreateForm.confirmPassword.$error.pattern">
+                  Confirm password should be compare with password.
+            </small>          
+          </div>          
+      </div>
+  </div>
+
+    <div class="row">
+       <div class="col-md-4 text-right">
+           <span style="color:#f00;">*</span><span>Email</span>
+       </div>
+       <div class="col-md-8">
+           <input type="email" name="email" placeholder="email"  ng-model="member.email" ng-maxlength=20 required/>
+          <div class="error" 
+                   ng-show="userCreateForm.email.$dirty && userCreateForm.email.$invalid">
+              <small class="error" 
+                     ng-show="userCreateForm.email.$error.required">
+                     Your email is required.
+              </small>
+              <small class="error" 
+                     ng-show="userCreateForm.email.$error.email">
+                     That is not a valid email. Please input a valid email.
+              </small>
+              <small class="error" 
+                     ng-show="userCreateForm.email.$error.maxlength">
+                      Your email cannot be longer than 20 characters
+              </small>
+          </div>           
+       </div>
+   </div>
+   <div class="row">
+       <div class="col-md-4 text-right">
+           <!-- <span style="color:#f00;">*</span> --><span>First Name</span>
+       </div>
+       <div class="col-md-8">
+           <input type="text" name="firstname" placeholder="firstname"  ng-model="member.firstName"/>
+       </div>
+   </div>
+   <div class="row">
+       <div class="col-md-4 text-right">
+           <!-- <span style="color:#f00;">*</span> --><span>Last Name</span>
+       </div>
+       <div class="col-md-8">
+           <input type="text" name="lastname" placeholder="lastname"  ng-model="member.lastName"/>
+       </div>
+   </div>
+   <div class="row">
+       <div class="col-md-4 text-right">
+           <span style="color:#f00;">*</span><span>Telephone</span>
+       </div>
+       <div class="col-md-8">
+            <input type="text" placeholder="telephone" name="telephone"  ng-model="member.telephone" required ng-pattern="phoneNumberRegex"/>
+            <div class="error" ng-show="userCreateForm.telephone.$dirty && userCreateForm.confirmPassword.$invalid">
+              <small class="error" ng-show="userCreateForm.telephone.$error.required">
+                  Your telephone is required.
+              </small>
+              <small class="error" 
+                    ng-show="userCreateForm.telephone.$error.pattern">
+                    Should be the format DDD-DDD-DDDD
+              </small>          
+            </div>            
+       </div>
+   </div>
+    <div class="row">
+        <div class="col-md-4 text-right">
+            <!-- <span style="color:#f00;">*</span> --><span>Member of organizations</span>
+        </div>
+        <div class="col-md-8">
+          <multi-select    
+            input-model="organizations"   
+            button-label="name" 
+            item-label="name"
+            tick-property="ticked"
+            output-model="member.organizations"
+          >
+          </multi-select>
+<!--           <div class="error" ng-show="member.organizations.length<1">
+            <small class="error">
+                organizations is required.
+            </small>         
+          </div>   -->         
+        </div>
+
+    </div>   
+<!--    <div class="row">
+       <div class="col-md-4 text-right">
+           <span style="color:#f00;">*</span><span>Member of organizations</span>
+       </div>
+       <div class="col-md-8">
+           <span ng-bind="promiseItem.name"></span>
+       </div>
+   </div>
+   <input type="hidden" ng-model="promiseItem._id" ng-bind="promiseItem._id">
+   <input type="hidden" ng-model="promiseItem.type" ng-bind="promiseItem.type"> -->
+
+   <div class="row">
+       <div class="col-md-4 text-right">
+           <span>Role</span>
+       </div>
+       <!-- <pre>
+           PromiseItem._id = {{promiseItem._id}}
+           member.role = {{member.role.name}}
+       </pre> -->
+       
+       <div class="col-md-8">
+           <select name="role" ng-model="member.role" ng-options="role for role in roles" required>
+              <option value="">- Select Element -</option>
+            </select>
+            <div class="error" ng-show="userCreateForm.role.$dirty && userCreateForm.role.$invalid">
+              <small class="error" ng-show="userCreateForm.role.$error.required">
+                  Role is required.
+              </small>         
+            </div>             
+       </div>
+   </div>
+</form>
+</div>
+
+    <cards-layout
+            num-of-column="3"
+            dialog-template-url= 'app/members/templates/members-dialog.tpl.html'
+            card-template-url= 'app/members/templates/members-card.tpl.html'
+            apix-data="members"
+            dialog-scope="dialogScope"
+            class="apixCardBox clearfix"
+            >
+    </cards-layout>
+</div>
